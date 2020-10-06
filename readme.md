@@ -1,30 +1,6 @@
-# Node Js Structure
-Don't put logic in the controller
+# api-backend
 
-### Installation
-Edit .env
-  - insert database name
-  - setup PORT
- 
-
-```run
-$ cd src
-$ run sequelize db:create 
-$ run sequelize db:migrate
-$ cd ../
-$ run nodemon src/server.js or node src/server.js
+### for sql error grouping
 ```
-### Swagger API
-
-| Module | url |
-| ------ | ------ |
-| CMS | <localhost:3000/cms-docs>
-| API | <localhost:3000/api-docs> | 
-
-
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 ```
-License
-MIT
-Ade Iskandar
- 
-
