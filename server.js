@@ -10,13 +10,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 
-const hostname = "localhost";
+const hostname = "0.0.0.0";
 const port = 3000;
 const routes = require('./router');
 
 app.use('/api', routes);
 
-app.listen(port, hostname, () =>
+app.listen(port, () =>
   console.log(`Your port is ${hostname} ${port}`),
 ); 
 
