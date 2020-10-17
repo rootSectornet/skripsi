@@ -8,6 +8,9 @@ const rijndael = require('./../controllers/rijndael');
 let array = {
   'users': 'users',
   'warehouses': 'warehouses',
+  'pembelians': 'pembelians',
+  'penjualans': 'penjualans',
+  'stocks': 'stocks',
 }
 
 for (let item in array) {
