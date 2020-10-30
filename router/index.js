@@ -8,11 +8,12 @@ const rijndael = require('./../controllers/rijndael');
 let array = {
   'users': 'users',
   'warehouses': 'warehouses',
+  'products': 'products',
+  'transactions': 'transactions',
 }
 
 for (let item in array) {
   route.use('/' + array[item],(req,res,next)=>{
-      console.log(req)
       if(req.method == 'POST'){
         req.body = JSON.parse(rijndael.decrypt(req.body))
       }
