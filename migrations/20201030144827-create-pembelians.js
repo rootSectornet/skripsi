@@ -1,21 +1,24 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('warehouses', {
+    await queryInterface.createTable('pembelians', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
-        type: Sequelize.STRING
+      id_warehouse: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'warehouses',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      alamat: {
-        type: Sequelize.STRING
-      },
-      status: {
-        type: Sequelize.INTEGER
+      tanggal: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('warehouses');
+    await queryInterface.dropTable('pembelians');
   }
 };

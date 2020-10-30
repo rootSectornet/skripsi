@@ -1,6 +1,4 @@
 'use strict';
-const bcrypt = require('bcrypt');
-
 const {
   Model
 } = require('sequelize');
@@ -13,37 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      users.belongsTo(models.warehouses, {
-        foreignKey: 'warehouse_id',
-      });  
+      users.belongsTo(models.warehouses,{
+        foreignKey: 'id_warehouse'
+      });
     }
   };
   users.init({
-    username: DataTypes.STRING,
-    email: {
-      type: DataTypes.STRING,
-      unique: true
-    },
-    password: {
-      type: DataTypes.STRING, 
-      set(value) {
-        this.setDataValue('password', bcrypt.hashSync(value, 10));
-      }
-    },
-    warehouse_id: DataTypes.INTEGER,
+    name: DataTypes.STRING,
+    password: DataTypes.STRING,
+    id_warehouse: DataTypes.INTEGER,
+    level: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'users',
   });
-  
-  users.prototype.comparePassword = function (passw, cb) {
-    bcrypt.compare(passw, this.password, function (err, isMatch) {
-        if (err) {
-          return cb(err);
-        }
-        cb(null, isMatch); 
-    });
-  };
-
   return users;
 };

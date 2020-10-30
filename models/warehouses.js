@@ -11,17 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      warehouses.hasMany(models.users, {
-        foreignKey: 'warehouse_id',
-        sourceKey: 'id'
-      });
-
+      warehouses.hasMany(models.users,{
+        foreignKey: 'id_warehouse'
+      })
+      warehouses.hasMany(models.products,{
+        foreignKey: 'id_warehouse'
+      })
+      warehouses.hasMany(models.penjualans,{
+        foreignKey: 'id_warehouse'
+      })
+      warehouses.hasMany(models.pembelians,{
+        foreignKey: 'id_warehouse'
+      })
     }
   };
   warehouses.init({
-    code: DataTypes.STRING,
-    alamat: DataTypes.STRING,
-    status: DataTypes.INTEGER
+    name: DataTypes.STRING,
+    alamat: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'warehouses',

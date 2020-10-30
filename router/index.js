@@ -8,14 +8,14 @@ const rijndael = require('./../controllers/rijndael');
 let array = {
   'users': 'users',
   'warehouses': 'warehouses',
-  'pembelians': 'pembelians',
-  'penjualans': 'penjualans',
-  'stocks': 'stocks',
 }
 
 for (let item in array) {
   route.use('/' + array[item],(req,res,next)=>{
-      req.body = JSON.parse(rijndael.decrypt(req.body))
+      console.log(req)
+      if(req.method == 'POST'){
+        req.body = JSON.parse(rijndael.decrypt(req.body))
+      }
       next()
   }, require('./' + item));
 }

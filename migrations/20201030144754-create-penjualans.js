@@ -8,20 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      no_faktur: {
-        type: Sequelize.STRING
+      id_warehouse: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'warehouses',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      stock_id: {
-        type: Sequelize.INTEGER
-      },
-      qty: {
-        type: Sequelize.INTEGER
-      },
-      harga: {
-        type: Sequelize.INTEGER
-      },
-      total: {
-        type: Sequelize.INTEGER
+      tanggal: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
