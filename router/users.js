@@ -9,7 +9,7 @@ route.post("/login", async (req,res,next)=>{
     })
     .catch((e)=>{
         console.log(e)
-        res.status(200).send(rijndael.encrypt({status:false,data:[],message:e}))
+        res.status(200).send(rijndael.encrypt({status:false,data:{},message:e}))
     })
 }); // /api/v1/login
  // /api/v1/login

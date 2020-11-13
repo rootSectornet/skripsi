@@ -28,6 +28,7 @@
     "faker": "^5.1.0",
     "helmet": "^4.1.0",
     "js-base64": "^3.4.5",
+    "moment": "^2.29.1",
     "mysql2": "^2.1.0",
     "rijndael-js": "^2.0.0",
     "sequelize": "^6.3.4",

@@ -5,6 +5,7 @@ const detailpenjualans = require("./../models").detailpenjualans;
 const penjualans = require("./../models").penjualans;
 const pembelians = require("./../models").pembelians;
 const db = require("./../models");
+const moment = require('moment');
 class Transaction{
     constructor(){
         this.sqlPenjualan = (id)=>{
@@ -36,12 +37,12 @@ class Transaction{
                                 id_penjualan: item.id
                             }
                           });
-                        return {
-                            id : item.id,
-                            tanggal : item.tanggal,
-                            warehouse : item.name,
-                            total : count
-                        }
+                          return {
+                              id : item.id,
+                              tanggal : moment(item.tanggal).format('LLL'),
+                              warehouse : item.name,
+                              total : count
+                          }
                     }));
                     resolve(res)
                 }else{
@@ -67,7 +68,7 @@ class Transaction{
                           });
                         return {
                             id : item.id,
-                            tanggal : item.tanggal,
+                            tanggal : moment(item.tanggal).format('LLL'),
                             warehouse : item.name,
                             total : count
                         }
